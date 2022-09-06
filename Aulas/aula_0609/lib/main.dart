@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:aula_0609/Imc.dart';
 import 'package:flutter/material.dart';
 
@@ -6,13 +8,13 @@ void main() {
 }
 
 class myApp extends StatelessWidget {
-  final TextEditingController controladorPeso = TextEditingController();
-  final TextEditingController controladorAltura = TextEditingController();
-
-  // const myApp({Key? key}) : super(key: key);
+  const myApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controladorPeso = TextEditingController();
+    final TextEditingController controladorAltura = TextEditingController();
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -29,8 +31,12 @@ class myApp extends StatelessWidget {
             RaisedButton(
                 child: Text("Calcular"),
                 onPressed: () {
-                  Imc ICI = new Imc(11, 12);
-                })
+                  int peso = int.parse(controladorPeso.text);
+                  int alt = int.parse(controladorAltura.text);
+                  Imc ic = new Imc(peso, alt);
+                  int receb = ic.calcularImc();
+                  print(receb);
+                }),
           ],
         ),
       ),
