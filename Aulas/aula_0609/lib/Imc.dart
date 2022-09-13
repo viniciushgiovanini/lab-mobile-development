@@ -1,11 +1,16 @@
-class Imc {
-  final int peso;
-  final int altura;
+class imc {
+  int peso = 0;
+  int altura = 0;
 
-  Imc(this.peso, this.altura);
+  // Com construtor
+  // imc(this.peso, this.altura);
+  imc(peso1, altura1) {
+    peso = peso1;
+    altura = altura1;
+  }
 
   calcularImc() {
-    int rIMC = (this.peso / this.altura).round();
+    int rIMC = (peso / altura).round();
     return rIMC;
   }
 }

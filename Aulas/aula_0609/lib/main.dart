@@ -1,45 +1,31 @@
 import 'dart:html';
 
-import 'package:aula_0609/Imc.dart';
 import 'package:flutter/material.dart';
+import 'package:aula_0609/imc.dart';
 
 void main() {
-  runApp(const myApp());
+  runApp(const imcClass());
 }
 
-class myApp extends StatelessWidget {
-  const myApp({Key? key}) : super(key: key);
+//Declarando Classe
+void aTeste() {
+  imc a1 = imc(0, 0);
+}
+
+class imcClass extends StatefulWidget {
+  const imcClass({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final TextEditingController controladorPeso = TextEditingController();
-    final TextEditingController controladorAltura = TextEditingController();
+  State<imcClass> createState() => _imcClassState();
+}
 
+class _imcClassState extends State<imcClass> {
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Calculando IMC'),
-        ),
-        body: Column(
-          children: <Widget>[
-            TextField(
-              controller: controladorPeso,
-            ),
-            TextField(
-              controller: controladorAltura,
-            ),
-            RaisedButton(
-                child: Text("Calcular"),
-                onPressed: () {
-                  int peso = int.parse(controladorPeso.text);
-                  int alt = int.parse(controladorAltura.text);
-                  Imc ic = new Imc(peso, alt);
-                  int receb = ic.calcularImc();
-                  print(receb);
-                }),
-          ],
-        ),
-      ),
-    );
+        home: Scaffold(
+      appBar: AppBar(title: Text("Calculando IMC com Classe")),
+      // body: BodyBody(),
+    ));
   }
 }
