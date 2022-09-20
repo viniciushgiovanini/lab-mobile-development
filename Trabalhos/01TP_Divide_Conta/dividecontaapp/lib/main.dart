@@ -4,18 +4,11 @@ import 'package:flutter/material.dart';
 
 //Widgets Statelles --> Sem alteração de Estado
 //Widgets Statefull --> COM alteração de Estado
+//Arrumar: A estrutura ta errada, tem que diminuir o tamanho dos input
 
 void main() {
   runApp(const divideC());
 }
-
-// MaterialApp(
-//   title: 'Flutter Demo',
-//   theme: ThemeData(
-//    primaryColor: primaryColor,
-//    ),
-//   home: MyApp(),
-// );
 
 class divideC extends StatefulWidget {
   const divideC({Key? key}) : super(key: key);
@@ -47,14 +40,14 @@ class _divideConta extends State<divideC> {
   BodyBody() {
     return Column(children: [
       TextFormField(
-          controller: valorTotal,
-          keyboardType: TextInputType.number,
-          decoration: InputDecoration(
-              labelText: "Valor Total", contentPadding: EdgeInsets.zero)),
+        controller: valorTotal,
+        keyboardType: TextInputType.number,
+        decoration: BoxDecoration1(),
+      ),
       TextFormField(
           controller: qtdPessoas,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: "Quantidade de Pessoas")),
+          decoration: BoxDecoration2()),
       ElevatedButton(onPressed: calculoConta, child: Text("Calcular")),
       Text('O valor a ser divido é: ${contaFinal.toString()}')
     ]);
@@ -68,5 +61,17 @@ class _divideConta extends State<divideC> {
     setState(() {
       contaFinal = valorFinal;
     });
+  }
+
+  BoxDecoration1() {
+    return InputDecoration(
+      labelText: "Valor Total",
+      border: OutlineInputBorder(),
+      // contentPadding: EdgeInsets.zero,
+    );
+  }
+
+  BoxDecoration2() {
+    return InputDecoration(labelText: "Quantidade de Pessoas");
   }
 }
