@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 //Widgets Statelles --> Sem alteração de Estado
@@ -6,6 +8,14 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const divideC());
 }
+
+// MaterialApp(
+//   title: 'Flutter Demo',
+//   theme: ThemeData(
+//    primaryColor: primaryColor,
+//    ),
+//   home: MyApp(),
+// );
 
 class divideC extends StatefulWidget {
   const divideC({Key? key}) : super(key: key);
@@ -21,9 +31,15 @@ class _divideConta extends State<divideC> {
   double contaFinal = 0.0;
 
   Widget build(BuildContext context) {
+    // const color = 0xFF151026;
     return MaterialApp(
         home: Scaffold(
-      appBar: AppBar(title: Text("Dividir Conta")),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Dividir Conta"),
+        backgroundColor: Colors.red,
+      ),
+      backgroundColor: Colors.white,
       body: BodyBody(),
     ));
   }
@@ -33,7 +49,8 @@ class _divideConta extends State<divideC> {
       TextFormField(
           controller: valorTotal,
           keyboardType: TextInputType.number,
-          decoration: InputDecoration(labelText: "Valor Total")),
+          decoration: InputDecoration(
+              labelText: "Valor Total", contentPadding: EdgeInsets.zero)),
       TextFormField(
           controller: qtdPessoas,
           keyboardType: TextInputType.number,
