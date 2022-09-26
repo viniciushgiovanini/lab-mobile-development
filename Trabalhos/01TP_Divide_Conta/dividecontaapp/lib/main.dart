@@ -29,6 +29,7 @@ class _divideConta extends State<divideC> {
     // const color = 0xFF151026;
     return MaterialApp(
         home: Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,
         title: Text("Dividir Conta"),
@@ -44,38 +45,36 @@ class _divideConta extends State<divideC> {
         margin: EdgeInsets.symmetric(vertical: 40.0),
         child: Row(children: [
           Column(children: [
-            Row(children: [
-              Container(
-                  margin: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Row(children: [
-                    SizedBox(
-                      width: 200,
-                      height: 100,
-                      child: TextFormField(
-                          controller: valorTotal,
-                          keyboardType: TextInputType.number,
-                          decoration: BoxDecoration1()),
-                    ),
-                  ])),
-              Container(
-                  margin: const EdgeInsets.only(right: 20.0),
-                  child: SizedBox(
+            Container(
+                margin: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(children: [
+                  SizedBox(
                     width: 200,
                     height: 100,
                     child: TextFormField(
-                        controller: qtdPessoas,
+                        controller: valorTotal,
                         keyboardType: TextInputType.number,
-                        decoration: BoxDecoration2()),
-                  )),
-              SizedBox(
-                width: 200,
-                height: 100,
-                child: TextFormField(
-                    controller: porcGarc,
-                    keyboardType: TextInputType.number,
-                    decoration: BoxDecoration3()),
-              )
-            ]),
+                        decoration: BoxDecoration1()),
+                  ),
+                ])),
+            Container(
+                // margin: const EdgeInsets.only(right: 20.0),
+                child: SizedBox(
+              width: 200,
+              height: 100,
+              child: TextFormField(
+                  controller: qtdPessoas,
+                  keyboardType: TextInputType.number,
+                  decoration: BoxDecoration2()),
+            )),
+            SizedBox(
+              width: 200,
+              height: 100,
+              child: TextFormField(
+                  controller: porcGarc,
+                  keyboardType: TextInputType.number,
+                  decoration: BoxDecoration3()),
+            ),
             Container(
                 margin: const EdgeInsets.only(bottom: 40.0),
                 child: SizedBox(
@@ -141,6 +140,7 @@ class _divideConta extends State<divideC> {
       contaTotal = valorTotaldaConta;
       parteGarco = valorGarcon;
       nPessoas = int.parse(qtdPessoas.text);
+      FocusManager.instance.primaryFocus?.unfocus();
     });
   }
 
