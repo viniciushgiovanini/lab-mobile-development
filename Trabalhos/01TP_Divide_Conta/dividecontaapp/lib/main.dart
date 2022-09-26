@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 //Widgets Statelles --> Sem alteração de Estado
@@ -38,19 +36,36 @@ class _divideConta extends State<divideC> {
   }
 
   BodyBody() {
-    return Column(children: [
-      TextFormField(
-        controller: valorTotal,
-        keyboardType: TextInputType.number,
-        decoration: BoxDecoration1(),
-      ),
-      TextFormField(
-          controller: qtdPessoas,
-          keyboardType: TextInputType.number,
-          decoration: BoxDecoration2()),
-      ElevatedButton(onPressed: calculoConta, child: Text("Calcular")),
-      Text('O valor a ser divido é: ${contaFinal.toString()}')
-    ]);
+    return Container(
+        margin: EdgeInsets.symmetric(vertical: 40.0),
+        child: Row(children: [
+          Column(children: [
+            Row(children: [
+              Container(
+                  margin: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Row(children: [
+                    SizedBox(
+                      width: 200,
+                      height: 100,
+                      child: TextFormField(
+                          controller: valorTotal,
+                          keyboardType: TextInputType.number,
+                          decoration: BoxDecoration1()),
+                    ),
+                  ])),
+              SizedBox(
+                width: 200,
+                height: 100,
+                child: TextFormField(
+                    controller: qtdPessoas,
+                    keyboardType: TextInputType.number,
+                    decoration: BoxDecoration2()),
+              ),
+            ]),
+            ElevatedButton(onPressed: calculoConta, child: Text("Calcular")),
+            Text('O valor a ser divido é: ${contaFinal.toString()}')
+          ])
+        ], mainAxisAlignment: MainAxisAlignment.center));
   }
 
   calculoConta() {
@@ -67,11 +82,16 @@ class _divideConta extends State<divideC> {
     return InputDecoration(
       labelText: "Valor Total",
       border: OutlineInputBorder(),
+      // contentPadding: EdgeInsets.symmetric(vertical: 40) PADDING
+
       // contentPadding: EdgeInsets.zero,
     );
   }
 
   BoxDecoration2() {
-    return InputDecoration(labelText: "Quantidade de Pessoas");
+    return InputDecoration(
+      labelText: "Quantidade de Pessoas",
+      border: OutlineInputBorder(),
+    );
   }
 }
