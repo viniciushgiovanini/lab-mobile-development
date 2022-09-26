@@ -19,7 +19,11 @@ class _divideConta extends State<divideC> {
   //Variaveis da classe
   var valorTotal = TextEditingController();
   var qtdPessoas = TextEditingController();
+  var porcGarc = TextEditingController();
   double contaFinal = 0.0;
+  double contaTotal = 0.0;
+  double parteGarco = 0.0;
+  int nPessoas = 0;
 
   Widget build(BuildContext context) {
     // const color = 0xFF151026;
@@ -53,28 +57,90 @@ class _divideConta extends State<divideC> {
                           decoration: BoxDecoration1()),
                     ),
                   ])),
+              Container(
+                  margin: const EdgeInsets.only(right: 20.0),
+                  child: SizedBox(
+                    width: 200,
+                    height: 100,
+                    child: TextFormField(
+                        controller: qtdPessoas,
+                        keyboardType: TextInputType.number,
+                        decoration: BoxDecoration2()),
+                  )),
               SizedBox(
                 width: 200,
                 height: 100,
                 child: TextFormField(
-                    controller: qtdPessoas,
+                    controller: porcGarc,
                     keyboardType: TextInputType.number,
-                    decoration: BoxDecoration2()),
-              ),
+                    decoration: BoxDecoration3()),
+              )
             ]),
-            ElevatedButton(onPressed: calculoConta, child: Text("Calcular")),
-            Text('O valor a ser divido é: ${contaFinal.toString()}')
+            Container(
+                margin: const EdgeInsets.only(bottom: 40.0),
+                child: SizedBox(
+                    height: 40,
+                    child: ElevatedButton(
+                      onPressed: calculoConta,
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.red)),
+                      child: Text("Calcular"),
+                    ))),
+            Container(
+              child: Row(
+                children: [
+                  Text(
+                    'O valor dividido para ${nPessoas} é: R\$',
+                    style: EstiloTextoNormal(),
+                  ),
+                  Text('${contaFinal.toStringAsFixed(2)}',
+                      style: EstiloTextoValor()),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                children: [
+                  Text('O valor pago ao garçom: R\$',
+                      style: EstiloTextoNormal()),
+                  Text('${parteGarco.toStringAsFixed(2)}',
+                      style: EstiloTextoValor()),
+                ],
+              ),
+            ),
+            Container(
+                margin: const EdgeInsets.only(top: 20.0),
+                child: Row(
+                  children: [
+                    Text('Valor Total da Conta: R\$',
+                        style: EstiloTextoNormal()),
+                    Text('${contaTotal.toStringAsFixed(2)}',
+                        style: EstiloTextoValor())
+                  ],
+                )),
           ])
         ], mainAxisAlignment: MainAxisAlignment.center));
   }
 
   calculoConta() {
     double quantidadeP = double.parse(qtdPessoas.text),
-        quantidadeValor = double.parse(valorTotal.text);
-    double valorFinal = 0.0;
-    valorFinal = quantidadeValor / quantidadeP;
+        quantidadeValor = double.parse(valorTotal.text),
+        quantidadeGarc = double.parse(porcGarc.text);
+    double valorGarcon = 0.0;
+    double valorFinalcada = 0.0;
+    double valorTotaldaConta = 0.0;
+
+    valorGarcon = (quantidadeValor * quantidadeGarc) / 100;
+    valorFinalcada = (quantidadeValor + valorGarcon) / quantidadeP;
+    valorTotaldaConta = quantidadeValor + valorGarcon;
+
     setState(() {
-      contaFinal = valorFinal;
+      contaFinal = valorFinalcada;
+      contaTotal = valorTotaldaConta;
+      parteGarco = valorGarcon;
+      nPessoas = int.parse(qtdPessoas.text);
     });
   }
 
@@ -93,5 +159,20 @@ class _divideConta extends State<divideC> {
       labelText: "Quantidade de Pessoas",
       border: OutlineInputBorder(),
     );
+  }
+
+  BoxDecoration3() {
+    return InputDecoration(
+      labelText: "% Garçom",
+      border: OutlineInputBorder(),
+    );
+  }
+
+  EstiloTextoNormal() {
+    return TextStyle(fontSize: 22);
+  }
+
+  EstiloTextoValor() {
+    return TextStyle(fontSize: 22, fontWeight: FontWeight.bold);
   }
 }
