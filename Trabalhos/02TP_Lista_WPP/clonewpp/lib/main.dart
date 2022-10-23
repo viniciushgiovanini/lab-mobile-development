@@ -1,8 +1,8 @@
 // Video utilizado como base: https://www.youtube.com/watch?v=1gMBSXWt1S4&ab_channel=JoseCarlosMacoratti
 // Site web utilizado como base: https://www.macoratti.net/19/06/flut_lisb1.htm
-import 'dart:html';
-
+//Video da troca de dados por mais telas https://www.youtube.com/watch?v=G_Dy7XkS6xQ&ab_channel=CaioMalheiros
 import 'package:flutter/material.dart';
+import 'package:clonewpp/telaClick.dart';
 
 void main() {
   runApp(const MeuMenu());
@@ -151,16 +151,12 @@ BodyCreateListView() {
         title: Text('${pessoas[index]['nome'].toString()}'),
         subtitle: Text("${pessoas[index]['telefone'].toString()}"),
         trailing: Icon(Icons.menu),
+        onTap: () {
+          var a = '${pessoas[index]['nome'].toString()}';
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => telaSecundaria(a)));
+        },
       );
     }),
-  );
-}
-
-CadastroPessoaListView() {
-  return ListTile(
-    leading: Icon(Icons.people),
-    title: Text("Pessoa 1"),
-    subtitle: Text("Telefone"),
-    trailing: Icon(Icons.menu),
   );
 }
