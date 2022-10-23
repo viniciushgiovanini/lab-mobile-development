@@ -11,7 +11,22 @@ class MeuMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text("WhatsApp")),
+        appBar: AppBar(
+          title: Text("WhatsApp"),
+          titleSpacing: 40,
+          backgroundColor: Colors.green,
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(right: 40),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                      size: 30.0,
+                    ))),
+          ],
+        ),
       ),
     );
   }
