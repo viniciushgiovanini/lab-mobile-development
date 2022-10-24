@@ -1,49 +1,12 @@
 // Video utilizado como base: https://www.youtube.com/watch?v=1gMBSXWt1S4&ab_channel=JoseCarlosMacoratti
 // Site web utilizado como base: https://www.macoratti.net/19/06/flut_lisb1.htm
 //Video da troca de dados por mais telas https://www.youtube.com/watch?v=G_Dy7XkS6xQ&ab_channel=CaioMalheiros
+
+// Aluno: Vinícius Henrique Giovainini
 import 'package:flutter/material.dart';
 import 'package:clonewpp/telaClick.dart';
 
-void main() {
-  runApp(const MeuMenu());
-}
-
-class MeuMenu extends StatefulWidget {
-  const MeuMenu({Key? key}) : super(key: key);
-
-  @override
-  State<MeuMenu> createState() => _MeuMenuState();
-}
-
-class _MeuMenuState extends State<MeuMenu> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("WhatsApp"),
-          titleSpacing: 40,
-          backgroundColor: Colors.green,
-          actions: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(right: 40),
-                child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.search,
-                      color: Colors.white,
-                      size: 30.0,
-                    ))),
-          ],
-        ),
-        body: Center(
-          child: BodyCreateListView(),
-        ),
-      ),
-    );
-  }
-}
-
+// Variavel armazenando dados previamente cadastrados (json), com Nome do usuário, telefone e link da imagem do avatar.
 var objetoContatos = [
   {
     "id": 1,
@@ -137,6 +100,47 @@ var objetoContatos = [
   }
 ];
 
+void main() {
+  runApp(const MeuMenu());
+}
+
+class MeuMenu extends StatefulWidget {
+  const MeuMenu({Key? key}) : super(key: key);
+
+  @override
+  State<MeuMenu> createState() => _MeuMenuState();
+}
+
+class _MeuMenuState extends State<MeuMenu> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("WhatsApp"),
+          titleSpacing: 40,
+          backgroundColor: Colors.green,
+          actions: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(right: 40),
+                child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                      size: 30.0,
+                    ))),
+          ],
+        ),
+        body: Center(
+          child: BodyCreateListView(),
+        ),
+      ),
+    );
+  }
+}
+
+// Criação de um ListView, com o Builder ListView.
 BodyCreateListView() {
   var pessoas = objetoContatos;
 
@@ -152,6 +156,7 @@ BodyCreateListView() {
         subtitle: Text("${pessoas[index]['telefone'].toString()}"),
         trailing: Icon(Icons.menu),
         onTap: () {
+          // Pega o nome de cada usuário armazena em A e manda atraves do navigator para a outra tela.
           var a = '${pessoas[index]['nome'].toString()}';
           Navigator.push(context,
               MaterialPageRoute(builder: (context) => telaSecundaria(a)));

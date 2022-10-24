@@ -1,3 +1,4 @@
+// Aluno: Vinícius Henrique Giovanini
 import 'package:flutter/material.dart';
 
 class telaSecundaria extends StatefulWidget {
@@ -13,6 +14,7 @@ class _telaSecundariaState extends State<telaSecundaria> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // Recebe dado da outra pagina e aplica no Text do appBar
         title: Text(widget.name),
         titleSpacing: 40,
         backgroundColor: Colors.green,
