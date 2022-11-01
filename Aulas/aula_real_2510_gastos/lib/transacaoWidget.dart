@@ -1,5 +1,7 @@
 import 'transacao.dart';
 import 'package:flutter/material.dart';
+// Pacote para alterar data pegado do site pub dev
+import 'package:intl/intl.dart';
 
 class transacaoUsuario extends StatelessWidget {
   transacaoUsuario({Key? key}) : super(key: key);
@@ -35,7 +37,7 @@ class transacaoUsuario extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    transacao.date.toString(),
+                    DateFormat('dd-MM-yyyy HH:mm').format(transacao.date),
                     style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:aula_real_2510_gastos/cadTrasacao.dart';
 import 'package:flutter/material.dart';
 import 'transacaoWidget.dart';
 
@@ -18,9 +19,9 @@ class _MyAppState extends State<MyApp> {
     return Scaffold(
       appBar: AppBar(title: Text("Teto de Gastos")),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [Card(child: Text("Cadastro")), transacaoUsuario()]),
+          children: [CadTrasacao(), transacaoUsuario()]),
     );
   }
 }
