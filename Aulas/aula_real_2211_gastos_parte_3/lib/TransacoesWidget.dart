@@ -14,6 +14,7 @@ class TransacaoWidget extends StatelessWidget {
       children: transacoes.map((transacao) {
         return Card(
             child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
