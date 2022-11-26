@@ -7,6 +7,7 @@ void main() {
   runApp(const MainAPP());
 }
 
+// COMENTAR AQUI
 class MainAPP extends StatefulWidget {
   const MainAPP({Key? key}) : super(key: key);
 
@@ -14,6 +15,7 @@ class MainAPP extends StatefulWidget {
   State<MainAPP> createState() => _MainAPPState();
 }
 
+// COMENTAR AQUI
 class _MainAPPState extends State<MainAPP> {
   String _theme = 'Light';
   var _themeData = ThemeData.light();
@@ -24,6 +26,7 @@ class _MainAPPState extends State<MainAPP> {
     _loadTheme();
   }
 
+// COMENTAR AQUI
 // Carregando o tema salvo pelo usuário
   _loadTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -33,6 +36,7 @@ class _MainAPPState extends State<MainAPP> {
     });
   }
 
+// COMENTAR AQUI
 // Carregando o tema salvo pelo usuário
   _setTheme(theme) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -53,12 +57,15 @@ class _MainAPPState extends State<MainAPP> {
           title: Text('SharedPreferences'),
           centerTitle: true,
         ),
+        // COMENTAR AQUI
         body: Column(children: [
+          // COMENTAR AQUI
           ElevatedButton(
               onPressed: () {
                 _setTheme('Light');
               },
               child: Text('Light')),
+          // COMENTAR AQUI
           ElevatedButton(
               onPressed: () {
                 _setTheme('Dark');
