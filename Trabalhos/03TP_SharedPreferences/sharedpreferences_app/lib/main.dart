@@ -28,7 +28,7 @@ class _MainAPPState extends State<MainAPP> {
     _loadTheme();
   }
 
-// Carregando o tema salvo pelo usuário
+// Carregando o tema salvo pelo usuario
 // Caso não consiga achar tema anterior, é carregado o tema light.
   _loadTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -38,7 +38,7 @@ class _MainAPPState extends State<MainAPP> {
     });
   }
 
-// Carregando o tema salvo pelo usuário
+// Carregando o tema salvo pelo usuario
 // Altera a variavel "_themeData"
   _setTheme(theme) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -59,15 +59,15 @@ class _MainAPPState extends State<MainAPP> {
           title: Text('SharedPreferences'),
           centerTitle: true,
         ),
-        // Corpo com os buttons da app
+        // Corpo com os btn da app
         body: Column(children: [
-          // Butão para clicar e setar tema light
+          // Btn para clicar e setar tema light
           ElevatedButton(
               onPressed: () {
                 _setTheme('Light');
               },
               child: Text('Light')),
-          // Butao para clicar e setar tema dark
+          // Btn para clicar e setar tema dark
           ElevatedButton(
               onPressed: () {
                 _setTheme('Dark');
