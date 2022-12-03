@@ -1,4 +1,52 @@
 import 'package:flutter/material.dart';
+import 'novoProduto.dart';
+
+void main() {
+  runApp(const Classezinha());
+}
+
+class Classezinha extends StatefulWidget {
+  const Classezinha({Key? key}) : super(key: key);
+
+  @override
+  State<Classezinha> createState() => _ClassezinhaState();
+}
+
+class _ClassezinhaState extends State<Classezinha> {
+  @override
+  bool isVisible = false;
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+            title: Center(
+          child: Text("Lista de Gastos"),
+        )),
+        body: Center(
+          child: Column(
+            children: <Widget>[
+              Container(
+                  child: Visibility(visible: isVisible, child: novoProd()))
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            setState(() {
+              isVisible = !isVisible;
+            });
+          },
+          child: const Icon(Icons.add),
+        ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
+    );
+  }
+}
+
+
+/*
+
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,3 +161,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+*/
